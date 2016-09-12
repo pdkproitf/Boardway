@@ -9,6 +9,10 @@ class PlaysController < ApplicationController
     @play = Play.new
   end
 
+  def edit
+    
+  end
+
   def show
     
   end
@@ -19,6 +23,22 @@ class PlaysController < ApplicationController
       redirect_to @play
     else
       render 'new'
+    end
+  end
+
+  def update
+    if @play.update(play_params)
+      redirect_to @play
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if @play.destroy
+      redirect_to plays_path
+    else
+      render 'show'
     end
   end
 
