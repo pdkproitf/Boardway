@@ -7,10 +7,11 @@ class PlaysController < ApplicationController
 
   def new
     @play = current_user.plays.build
+    @categories = Category.all.map { |e|  [e.name, e.id] }
   end
 
   def edit
-    
+    @categories = Category.all.map { |e|  [e.name, e.id] }
   end
 
   def show
@@ -20,7 +21,7 @@ class PlaysController < ApplicationController
   def create
     @play = current_user.plays.build(play_params)
     if @play.save
-      redirect_to @play
+      redirect_to root_path
     else
       render 'new'
     end
@@ -48,6 +49,6 @@ class PlaysController < ApplicationController
     end
 
     def play_params
-      params.require(:play).permit(:title, :description, :director)
+      params.require(:play).permit(:title, :description, :director, :category_id)
     end
 end
