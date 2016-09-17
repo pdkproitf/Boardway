@@ -19,6 +19,16 @@
   </div>
 </div>
 
+  <div class="links btn-group">
+    <% if user_signed_in? %>
+      <% if @play.user_id == current_user.id %>
+        <%= link_to "Edit", edit_play_path(@play) %>
+        <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    <% end %>
+    <%= link_to "Back", plays_path %>
+  </div>
+
 <div class="row">
   <div class="col-md-12">
     <div class="reviews">
@@ -29,16 +39,6 @@
       </div>
     </div>
   </div> 
-</div>
-
-<div class="links btn-group">
-  <% if user_signed_in? %>
-    <% if @play.user_id == current_user.id %>
-      <%= link_to "Edit", edit_play_path(@play) %>
-      <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
-  <% end %>
-<%= link_to "Back", plays_path %>
 </div>
 
 <script type="text/javascript">
