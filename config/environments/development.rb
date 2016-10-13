@@ -53,4 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.assets.precompile +=
+    Dir["#{Rails.root}/app/assets/stylesheets/site/site/*.*"].collect {|s| "site/" + File.basename(s).gsub(/.scss|.sass/, '') }
 end
