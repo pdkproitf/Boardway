@@ -29,6 +29,11 @@
     <%= link_to "Back", plays_path %>
   </div>
 
+  <div>
+    <%= social_share_button_tag(@play.title) %>
+    <%= social_share_button_tag(@play.title, :rel => "twipsy") %>
+  </div>
+
 <div class="row">
   <div class="col-md-12">
     <div class="reviews">
@@ -36,10 +41,13 @@
       <%= render @play.reviews %>
       <div>
         <%= link_to "Add Reviews", new_play_review_path(@play), class: "btn-custom" %>
+        <%= social_share_button_tag(@play.title, :image => "https://raw.github.com/vkulpa/social-share-button/master/lib/assets/images/sprites/social-share-button/tumblr.png", :'data-type' => 'photo') %>
+
       </div>
     </div>
   </div> 
 </div>
+
 
 <script type="text/javascript">
   $('.review-rating').raty({
